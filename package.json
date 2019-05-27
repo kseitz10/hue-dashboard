@@ -231,7 +231,7 @@
     "history": "^4.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-hot-loader": "^4.7.1",
+    "react-hot-loader": "4.7.2",
     "react-redux": "^6.0.1",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
