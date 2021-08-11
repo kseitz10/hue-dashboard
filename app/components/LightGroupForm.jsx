@@ -7,9 +7,9 @@ export default function LightGroupForm({ hueStatus }) {
       <div className="col">
         <legend>Groups</legend>
         <ul className="list-unstyled">
-          {Object.values(hueStatus?.groups).map((group, i) => (
-            <li key={group.name}>
-              <LightGroup group={group} index={i} />
+          {Object.values(hueStatus?.groups).map(group => (
+            <li key={group.id}>
+              <LightGroup group={group} />
             </li>
           ))}
         </ul>

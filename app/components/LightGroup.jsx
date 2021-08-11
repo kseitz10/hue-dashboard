@@ -2,14 +2,13 @@ import React, { useContext } from 'react';
 import { toggleGroup } from '../api/HueApi';
 import { HueStatusUpdate } from './App';
 
-function LightGroup({ group, index }) {
-  const { name, state } = group;
-  const adjustedIndex = index + 1;
-  const groupId = `group${adjustedIndex}`;
+function LightGroup({ group }) {
+  const { name, state, id } = group;
+  const idString = `group${id}`;
   const refreshHue = useContext(HueStatusUpdate);
 
-  function onChange(myIndex, isOn) {
-    toggleGroup(myIndex, isOn)
+  function onChange(groupId, isOn) {
+    toggleGroup(groupId, isOn)
       .then(refreshHue)
       .catch(e => console.log(e));
   }
@@ -24,27 +23,27 @@ function LightGroup({ group, index }) {
       <div className="btn-group btn-group-toggle">
         <label
           className={`btn btn-warning ${state.any_on ? 'active' : ''}`}
-          htmlFor={`${groupId}-on`}
+          htmlFor={`${idString}-on`}
         >
           <input
-            name={groupId}
-            id={`${groupId}-on`}
+            name={idString}
+            id={`${idString}-on`}
             type="radio"
             checked={state.any_on}
-            onChange={() => onChange(adjustedIndex, false)}
+            onChange={() => onChange(id, false)}
           />
           On
         </label>
         <label
           className={`btn btn-secondary ${state.any_on ? '' : 'active'}`}
-          htmlFor={`${groupId}-off`}
+          htmlFor={`${idString}-off`}
         >
           <input
-            name={groupId}
-            id={`${groupId}-off`}
+            name={idString}
+            id={`${idString}-off`}
             type="radio"
             checked={!state.any_on}
-            onChange={() => onChange(adjustedIndex, true)}
+            onChange={() => onChange(id, true)}
           />
           Off
         </label>
